@@ -11,7 +11,8 @@ export class CreateRouteUseCase {
   // * Caso a entidade seja retornada nesse método, a camada de "controllers" que for se utilizar desse use-case, terá, não apenas o conhecimento da camada de use-case, mas também, o conhecimento da camada de entidades. Essa dependência entre camadas deve ser apenas entre uma camada qualquer em conjunto com a camada seguinte.
   execute(input: CreateRouteInput) {
     const route = new Route(input);
-    return {};
+    // * Retorno do objeto de props e não da entidade propriamente dita.
+    return route.toJson();
   }
 }
 

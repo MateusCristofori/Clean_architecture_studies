@@ -37,6 +37,8 @@ export class Route {
     this.props.title = title;
   }
 
+  // * Esse método será responsável por retornar o objeto que representa todas as propriedades da entidade "Route". Retorna o objeto "RouteProps". Com isso, podemos manipular todas as informações que a entidade de Rotas possui, sem a camada a cima de use cases saber exatamente como a entidade funciona.
+  // * Aparentemente podemos pensar que esse método serve como forma de abstração entre camadas. Para que camadas mais externas conheçam apenas suas camadas "filhas" (que são envolvidas por diretamente por elas).
   toJson() {
     return this.props;
   }
