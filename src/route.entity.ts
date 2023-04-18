@@ -1,4 +1,4 @@
-// * Esse arquivo representa a "parte amarela" do anel concêntrico, ou seja, é parte que irá concentrar as regras de negócio da aplicação.
+// * Esse arquivo representa a camada mais ao centro do anel concêntrico, ou seja, é parte que irá concentrar as regras de negócio da aplicação. Essa camada é a "Entity".
 // * As regras de negócio deve ser agnóstico a framework e tecnologias!
 
 export type RouteProps = {
@@ -26,6 +26,8 @@ export class Route {
 
   // * Esse método representa uma intenção de mudança de algo que faz parte da entidade! Não é um método "anêmico", mas representa um comportamento.
   // * Devemos separar as alterações de cada atributo para métodos diferentes! Sempre respeitar a responsabilidade única.
+  // * Todos os métodos de comportamento, no final das contas, são métodos setters. Mas, eles executam a regra de negócio da entidade.
+  // * A junção de todos os métodos de comportamento formam as regras de negócio da entidade.
   updateTitle(title: string) {
     this.props.title = title;
   }
@@ -33,6 +35,10 @@ export class Route {
   // ? Esse método precisa ser necessariamente privado, ou temos a opção de não criá-lo para evitar falta de expressividade da entidade?
   private set title(title: string) {
     this.props.title = title;
+  }
+
+  toJson() {
+    return this.props;
   }
 }
 
