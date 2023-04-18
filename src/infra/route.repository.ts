@@ -4,16 +4,13 @@
 // * Para manter esse isolamento, usa-se "repositórios" onde iremos delegar a responsabilidade de persistência de dados.
 // * A camada de repositórios no padrão de Clean Architecture lidar apenas, e diretamente, com a própria entidade! Um repositório lida apenas com UMA entidade e somente ela!
 
-import { Route } from "./route.entity";
-
-// * Interface responsável pela inversão de dependência. Também presente na arquitetura hexagonal.
-export interface IRouteRepository {
-  insert(route: Route): Promise<void>;
-}
+import { IRouteRepository } from "../domain/IRouteRepository";
+import { Route } from "../domain/route.entity";
 
 // * A camada de use-cases irá receber os repositórios pode meio de atributo de referência. Porém, esse atributo de referência será do tipo da interface que o repositório implementa!
 export class RouteRepository implements IRouteRepository {
-  insert(route: Route): Promise<void> {
-    throw new Error("Method not implemented.");
+  public itens = [];
+  async insert(route: Route): Promise<void> {
+    this.itens.push(route);
   }
 }

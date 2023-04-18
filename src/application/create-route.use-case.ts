@@ -1,7 +1,7 @@
-// * Essa camada representa a camada que envolve a camada "Entity". É a camada "use case".
+// * Essa camada representa a camada que envolve a camada "Entity". É a camada "use-case".
 
-import { Coordenates, Route } from "./route.entity";
-import { IRouteRepository } from "./route.repository";
+import { Coordenates, Route } from "../domain/route.entity";
+import { IRouteRepository } from "../infra/route.repository";
 
 // * A camada "entity" representa as regras de negócio da aplicação de uma forma mais "pura", enquanto a camada de "use case" é responsável por coordenar essas regras de negócio vindas das entidades.
 // * Essa classe irá realizar operações em cima das entidades!
