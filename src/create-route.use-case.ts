@@ -9,7 +9,7 @@ export class CreateRouteUseCase {
   // * Não devemos retornar entidades na camada de use-case. Cada camada conhece a apenas a camada seguinte a ela. Ou seja, "use-case" conhece apenas "entity", "controllers" (web) conhece apenas "use-case" e assim por diante.
   // * Caso seja retornado a entidade na camada de use-case, irá acontecer uma relação entrelaçamento entre camadas. Ou seja, camadas mais internas acabam sendo "conhecidas" por camadas mais externas onde não deveria ter relação umas com as outras.
   // * Caso a entidade seja retornada nesse método, a camada de "controllers" que for se utilizar desse use-case, terá, não apenas o conhecimento da camada de use-case, mas também, o conhecimento da camada de entidades. Essa dependência entre camadas deve ser apenas entre uma camada qualquer em conjunto com a camada seguinte.
-  execute(input: CreateRouteInput) {
+  execute(input: CreateRouteInput): CreateRouteOutput {
     const route = new Route(input);
     // * Retorno do objeto de props e não da entidade propriamente dita.
     return route.toJson();
@@ -27,5 +27,5 @@ type CreateRouteOutput = {
   title: string;
   startPosition: Coordenates;
   endPosition: Coordenates;
-  points?: [];
+  points?: Coordenates[];
 };
